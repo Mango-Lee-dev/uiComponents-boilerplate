@@ -1,23 +1,25 @@
-import { useEffect, useRef } from 'react'
+"use client";
+
+import { useEffect, useRef } from "react";
 
 const VanillaWrapper = ({
-  title = '',
-  subTitle = '',
+  title = "",
+  subTitle = "",
   initiator,
 }: {
-  title?: string
-  subTitle?: string
-  initiator: (wrapper: HTMLDivElement) => void
+  title?: string;
+  subTitle?: string;
+  initiator: (wrapper: HTMLDivElement) => void;
 }) => {
-  const wrapper = useRef<HTMLDivElement>(null)
-  const isInit = useRef(false)
+  const wrapper = useRef<HTMLDivElement>(null);
+  const isInit = useRef(false);
 
   useEffect(() => {
     if (!isInit.current && !!wrapper.current) {
-      initiator(wrapper.current)
-      isInit.current = true
+      initiator(wrapper.current);
+      isInit.current = true;
     }
-  }, [initiator])
+  }, [initiator]);
 
   return (
     <>
@@ -28,7 +30,7 @@ const VanillaWrapper = ({
       )}
       <div ref={wrapper} />
     </>
-  )
-}
+  );
+};
 
-export default VanillaWrapper
+export default VanillaWrapper;
