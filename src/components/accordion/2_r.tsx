@@ -13,7 +13,7 @@ const AccordionItem = ({
   toggle: () => void;
 }) => {
   return (
-    <li key={id} className={cx("item2", { current })}>
+    <li key={id} className={cx("item", "item2", { current })}>
       <div className={cx("tab")} onClick={toggle}>
         {title}
       </div>
@@ -33,7 +33,9 @@ const Accordion2 = () => {
 
   return (
     <>
-      <h3>#2. React</h3>
+      <h3>
+        #2. React<sub>css로 hidden 처리</sub>
+      </h3>
       <ul className={cx("container")}>
         {accordionData.map((d) => (
           <AccordionItem

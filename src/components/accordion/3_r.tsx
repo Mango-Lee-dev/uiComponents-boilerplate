@@ -8,24 +8,21 @@ const AccordionItem = ({
   description,
   current,
   toggle,
-}: {
-  id: string;
-  title: string;
-  description: string;
+}: (typeof accordionData)[number] & {
   current: boolean;
   toggle: () => void;
 }) => {
   return (
-    <li className={cx("item", { current })} key={id}>
+    <li key={id} className={cx("item", "item3", { current })}>
       <div className={cx("tab")} onClick={toggle}>
         {title}
       </div>
-      {current ? <div className={cx("description")}>{description}</div> : null}
+      <p className={cx("description")}>{description}</p>
     </li>
   );
 };
 
-const Accordion1 = () => {
+const Accordion3 = () => {
   const [currentId, setCurrentId] = useState<string | null>(
     accordionData[0].id
   );
@@ -33,16 +30,17 @@ const Accordion1 = () => {
   const toggleItem = (id: string) => () => {
     setCurrentId((prev) => (prev === id ? null : id));
   };
+
   return (
     <>
       <h3>
-        #1. React<sub>현재 desc만 html로 그리기</sub>
+        #3. React <sub>현재 desc만 html 사용</sub>
       </h3>
       <ul className={cx("container")}>
         {accordionData.map((d) => (
           <AccordionItem
-            {...d}
             key={d.id}
+            {...d}
             current={currentId === d.id}
             toggle={toggleItem(d.id)}
           />
@@ -52,4 +50,4 @@ const Accordion1 = () => {
   );
 };
 
-export default Accordion1;
+export default Accordion3;
