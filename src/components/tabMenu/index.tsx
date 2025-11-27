@@ -1,4 +1,5 @@
 import Tab1 from "./1_r";
+import Tab2 from "./2_r";
 import cx from "./cx";
 
 const TabMenus = () => {
@@ -6,6 +7,7 @@ const TabMenus = () => {
     <div className={cx("TabMenus")}>
       <h1>탭메뉴</h1>
       <Tab1 />
+      <Tab2 />
     </div>
   );
 };
