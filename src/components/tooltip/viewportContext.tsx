@@ -51,7 +51,7 @@ const subscribe = (callback: () => void) => {
   resizeObserver.observe(document.body);
 
   return () => {
-    window.addEventListener("scroll", callback);
+    window.removeEventListener("scroll", callback);
     resizeObserver.disconnect();
   };
 };
