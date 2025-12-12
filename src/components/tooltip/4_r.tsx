@@ -1,7 +1,9 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import cx from "./cx";
 import data from "./data";
-import ViewportContextProvider, { useViewportRect } from "./viewportContext";
+import ViewportContextProvider, {
+  useViewportRect,
+} from "../../context/viewportContext";
 
 type Style = Partial<Record<"left" | "top" | "right" | "bottom", number>>;
 
