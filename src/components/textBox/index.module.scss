@@ -1,0 +1,13 @@
+.TextBoxes {
+  .container {
+    width: 50vw;
+    position: relative;
+  }
+
+  .textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+    overflow-y: scroll;
+  }
+}

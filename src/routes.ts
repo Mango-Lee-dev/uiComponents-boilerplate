@@ -1,6 +1,7 @@
 import Accordion from "@/components/accordion";
 import TabMenus from "./components/tabMenu";
 import Tooltips from "./components/tooltip";
+import TextBox from "./components/textBox";
 
 export const routePaths = [
   "/",
@@ -86,7 +87,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: "/textBox",
     link: "/textBox",
     name: "04. 반응형 텍스트박스",
-    children: null,
+    children: TextBox,
   },
   "/lineClamp": {
     key: "/lineClamp",
