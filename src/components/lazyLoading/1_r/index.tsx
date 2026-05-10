@@ -1,6 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import cx from "../cx";
 import data from "../data";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+
+const ioOptions: IntersectionObserverInit = {
+  threshold: 0,
+};
 
 const LazyImage = ({
   src,
@@ -12,6 +17,14 @@ const LazyImage = ({
   height: number;
 }) => {
   const imgRef = useRef<HTMLImageElement>(null);
+  const { entires, observeRef } = useIntersectionObserver(imgRef, ioOptions);
+
+  useEffect(() => {
+    const isVisible = entires[0]?.isIntersecting;
+    if (isVisible) {
+      imgRef.current!.src = src;
+    }
+  }, [src, entires]);
   return (
     <img
       ref={imgRef}
