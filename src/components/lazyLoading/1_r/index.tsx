@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import cx from "../cx";
 import data from "../data";
 
@@ -10,13 +11,15 @@ const LazyImage = ({
   width: number;
   height: number;
 }) => {
+  const imgRef = useRef<HTMLImageElement>(null);
   return (
     <img
-      src={src}
+      ref={imgRef}
+      src=""
       width={width}
       height={height}
       alt=""
-      className={cx("lazy")}
+      className={cx("img", "lazy")}
     />
   );
 };
