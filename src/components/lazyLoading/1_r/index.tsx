@@ -40,9 +40,9 @@ const LazyImage = ({
 const LazyLoad1 = () => {
   return (
     <>
-      <h2>
-        지연로딩<sub>#1</sub>
-      </h2>
+      <h3>
+        React<sub>#1</sub>
+      </h3>
       {data.map((url, index) => (
         <LazyImage src={url} key={`${index}-${url}`} width={600} height={320} />
       ))}
