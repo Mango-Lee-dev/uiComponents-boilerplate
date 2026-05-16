@@ -4,6 +4,8 @@ import Tooltips from "./components/tooltip";
 import TextBox from "./components/textBox";
 import LineClamp from "./components/lineClamp";
 import LazyLoading from "./components/lazyLoading";
+import LazyLoad1R from "./components/lazyLoading/1_r";
+import LazyLoadingVanilla from "./components/lazyLoading/1_v";
 
 export const routePaths = [
   "/",
@@ -13,6 +15,8 @@ export const routePaths = [
   "/textBox",
   "/lineClamp",
   "/lazyLoading",
+  "/lazyLoading/1_r",
+  "/lazyLoading/1_v",
   "/infiniteScroll",
   "/scrollBox",
   "/scrollSpy",
@@ -53,6 +57,8 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       "/textBox",
       "/lineClamp",
       "/lazyLoading",
+      "/lazyLoading/1_r",
+      "/lazyLoading/1_v",
       "/infiniteScroll",
       "/scrollBox",
       "/scrollSpy",
@@ -102,6 +108,18 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     link: "/lazyLoading",
     name: "06. 지연 로딩",
     children: LazyLoading,
+  },
+  "/lazyLoading/1_r": {
+    key: "/lazyLoading/1_r",
+    link: "/lazyLoading/1_r",
+    name: "06-1. 지연 로딩 (React)",
+    children: LazyLoad1R,
+  },
+  "/lazyLoading/1_v": {
+    key: "/lazyLoading/1_v",
+    link: "/lazyLoading/1_v",
+    name: "06-2. 지연 로딩 (Vanilla)",
+    children: LazyLoadingVanilla,
   },
   "/infiniteScroll": {
     key: "/infiniteScroll",
