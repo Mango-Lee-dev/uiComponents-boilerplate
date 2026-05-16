@@ -20,18 +20,20 @@ const LazyImage = ({
   const [loadded, setLoadded] = useState(false);
   const { entires, observeRef } = useIntersectionObserver(imgRef, ioOptions);
 
+  const onLoad = () => {
+    setLoadded(true);
+  };
+
   useEffect(() => {
     if ("loading" in HTMLImageElement.prototype) {
+      imgRef.current!.setAttribute("src", src);
+      imgRef.current!.setAttribute("loading", "lazy");
       observeRef.current?.disconnect();
       return;
     }
 
     const isVisible = entires[0]?.isIntersecting;
     if (isVisible) {
-      const onLoad = () => {
-        setLoadded(true);
-      };
-      imgRef.current!.addEventListener("load", onLoad);
       imgRef.current!.setAttribute("src", src);
       observeRef.current?.disconnect();
     }
@@ -46,6 +48,7 @@ const LazyImage = ({
       alt=""
       className={cx("img", loadded ? "" : "lazy")}
       loading="lazy"
+      onLoad={onLoad}
     />
   );
 };
