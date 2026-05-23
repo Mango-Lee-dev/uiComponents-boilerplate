@@ -6,6 +6,7 @@ import LineClamp from "./components/lineClamp";
 import LazyLoading from "./components/lazyLoading";
 import LazyLoad1R from "./components/lazyLoading/1_r";
 import LazyLoadingVanilla from "./components/lazyLoading/1_v";
+import InfiniteScrollR from "./components/infiniteScroll/react";
 
 export const routePaths = [
   "/",
@@ -17,7 +18,7 @@ export const routePaths = [
   "/lazyLoading",
   "/lazyLoading/1_r",
   "/lazyLoading/1_v",
-  "/infiniteScroll",
+  "/infiniteScroll/react",
   "/scrollBox",
   "/scrollSpy",
   "/snackbar",
@@ -59,7 +60,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
       "/lazyLoading",
       "/lazyLoading/1_r",
       "/lazyLoading/1_v",
-      "/infiniteScroll",
+      "/infiniteScroll/react",
       "/scrollBox",
       "/scrollSpy",
       "/snackbar",
@@ -121,11 +122,11 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     name: "06-2. 지연 로딩 (Vanilla)",
     children: LazyLoadingVanilla,
   },
-  "/infiniteScroll": {
-    key: "/infiniteScroll",
-    link: "/infiniteScroll",
+  "/infiniteScroll/react": {
+    key: "/infiniteScroll/react",
+    link: "/infiniteScroll/react",
     name: "07. 무한 스크롤",
-    children: null,
+    children: InfiniteScrollR,
   },
   "/scrollBox": {
     key: "/scrollBox",
