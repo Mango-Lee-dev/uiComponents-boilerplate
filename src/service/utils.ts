@@ -44,3 +44,6 @@ export const pickRandom = <T>({
 
   return shuffled.slice(0, length);
 };
+
+export const waitFor = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
