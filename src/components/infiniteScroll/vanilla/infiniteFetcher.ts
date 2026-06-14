@@ -1,3 +1,6 @@
+import { pickRandom, randomize, waitFor } from "@/service/utils";
+import data from "../data";
+
 export type Datum = {
   index: number;
   id: string;
@@ -5,7 +8,33 @@ export type Datum = {
   description: string;
 };
 
-export type FetchState<T> = {
+export type FetchState = "loading" | "fetched" | "idle" | "error";
+
+export type State<T> = {
   data: T[][];
-  state: "loading" | "fetched" | "idle" | "error";
+  state: FetchState;
 };
+
+const generatePageData = async () => {
+  const randomData = pickRandom({ data, length: 20 });
+  await waitFor(
+    randomize({
+      min: 300,
+      max: 1500,
+      step: 50,
+    }),
+  );
+  return randomData;
+};
+
+const infiniteFetcher = async (
+  callback: (state: FetchState, data?: Datum[]) => void,
+) => {
+  callback("loading");
+
+  const nextPageData = await generatePageData();
+
+  callback("fetched", nextPageData);
+};
+
+export default infiniteFetcher;
