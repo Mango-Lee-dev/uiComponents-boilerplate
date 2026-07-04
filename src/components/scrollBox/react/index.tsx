@@ -1,0 +1,50 @@
+import { useCallback } from "react";
+import cx from "../cx";
+import data from "../data";
+import { LazyImage } from "@/components/lazyLoading/1_r";
+
+const Item = ({
+  id,
+  description,
+  imgUrl,
+}: {
+  id: string;
+  description: string;
+  imgUrl: string;
+}) => (
+  <div>
+    <LazyImage src={imgUrl} width={250} height={400} />
+    <div>{description}</div>
+  </div>
+);
+
+const ScrollBox = () => {
+  const move = useCallback((direction: "prev" | "next") => {
+    const elem: HTMLElement = document.createElement("div");
+    elem.scrollIntoView({
+      inline: "start",
+      block: "nearest",
+      behavior: "smooth",
+    });
+    elem.remove();
+  }, []);
+  return (
+    <>
+      <h3>ScrollBox - React</h3>
+      <div className={cx("scrollBox")}>
+        <ul className={cx("list")}>
+          <li className={cx("observer")} />
+          {data.map((item) => (
+            <li key={item.id} className={cx("item")}>
+              <Item {...item} />
+            </li>
+          ))}
+        </ul>
+        <button className={cx("nav-button", "prev", { on: true })} />
+        <button className={cx("nav-button", "next", { on: true })} />
+      </div>
+    </>
+  );
+};
+
+export default ScrollBox;

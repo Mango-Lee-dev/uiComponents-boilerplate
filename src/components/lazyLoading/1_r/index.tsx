@@ -7,7 +7,7 @@ const ioOptions: IntersectionObserverInit = {
   threshold: 0,
 };
 
-const LazyImage = ({
+export const LazyImage = ({
   src,
   width,
   height,
