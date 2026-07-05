@@ -8,7 +8,7 @@ import LazyLoad1R from "./components/lazyLoading/1_r";
 import LazyLoadingVanilla from "./components/lazyLoading/1_v";
 import InfiniteScrollR from "./components/infiniteScroll/react";
 import InfiniteScrollV from "./components/infiniteScroll/vanilla";
-import ScrollBox from "./components/scrollBox/react";
+import ScrollBox_React from "./components/scrollBox/react";
 
 export const routePaths = [
   "/",
@@ -142,7 +142,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: "/scrollBox",
     link: "/scrollBox",
     name: "08. 횡 스크롤 박스",
-    children: ScrollBox,
+    children: ScrollBox_React,
   },
   "/scrollSpy": {
     key: "/scrollSpy",
