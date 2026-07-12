@@ -1,7 +1,9 @@
 import VanillaWrapper from "@/components/vanillaWrapper";
+import vanillaScrollBox from "./scrollBox";
 
 const initiator = (warpper: HTMLElement) => {
-  warpper.append();
+  const $scrollBox = vanillaScrollBox();
+  warpper.append($scrollBox);
 };
 
 const ScrollBox_Vanilla = () => (
