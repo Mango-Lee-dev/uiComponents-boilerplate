@@ -1,6 +1,33 @@
 import cx from "../cx";
 import data from "../data";
 
+const ListItem = ({
+  id,
+  number,
+  title,
+  description,
+}: {
+  id: string;
+  number: number;
+  title: string;
+  description: string;
+}) => {
+  return (
+    <li id={id} data-number={number}>
+      <p>
+        <strong>
+          {number}. {title}
+        </strong>
+      </p>
+      <div>
+        {description.split("\r\n").map((line, i) => (
+          <p key={i}>{line}</p>
+        ))}
+      </div>
+    </li>
+  );
+};
+
 const ScrollSpy = () => {
   return (
     <div className={cx("ScrollSpy")}>
@@ -14,6 +41,11 @@ const ScrollSpy = () => {
           ))}
         </ul>
       </header>
+      <ul>
+        {data.map((item) => (
+          <ListItem {...item} number={item.index + 1} key={item.id} />
+        ))}
+      </ul>
     </div>
   );
 };
