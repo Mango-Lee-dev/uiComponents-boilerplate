@@ -11,6 +11,7 @@ import InfiniteScrollV from "./components/infiniteScroll/vanilla";
 import ScrollBox from "./components/scrollBox";
 import ScrollSpy from "./components/scrollSpy/react";
 import ScrollSpy1R from "./components/scrollSpy/1_r";
+import ScrollSpy2R from "./components/scrollSpy/2_r";
 
 export const routePaths = [
   "/",
@@ -26,10 +27,10 @@ export const routePaths = [
   "/infiniteScroll/vanilla",
   "/scrollBox",
   "/scrollSpy",
-  '/scrollSpy/1_r',
-  '/scrollSpy/2_r',
-  '/scrollSpy/3_v',
-  '/scrollSpy/4_r',
+  "/scrollSpy/1_r",
+  "/scrollSpy/2_r",
+  "/scrollSpy/3_v",
+  "/scrollSpy/4_r",
   "/snackbar",
   "/modal",
   "/popover",
@@ -170,7 +171,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: "/scrollSpy/2_r",
     link: "/scrollSpy/2_r",
     name: "09-2. 스크롤 스파이 (React #2)",
-    children: null,
+    children: ScrollSpy2R,
   },
   "/scrollSpy/3_v": {
     key: "/scrollSpy/3_v",
