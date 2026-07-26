@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import cx from "./cx";
 import data from "./data";
 import useIntersectionObserver from "@/hooks/useIntersectionObserverV2";
@@ -12,7 +12,7 @@ type ListItemProps = {
 
 const ListItem = ({ id, index, title, description }: ListItemProps) => {
   return (
-    <li id={id} data-number={index + 1} data-index={index}>
+    <li id={id} data-index={index}>
       <p>
         <strong>
           {index + 1}. {title}
@@ -40,11 +40,38 @@ const ScrollSpy2 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navRef = useRef<(HTMLLIElement | null)[]>([]);
   const itemsRef = useRef<Elem[]>([]);
-  const entries = useIntersectionObserver(itemsRef, IOOptions);
+  const { entries } = useIntersectionObserver(itemsRef, IOOptions);
+
+  const setCurrentItem = useCallback((index: number) => {
+    setCurrentIndex(index);
+    navRef.current[index]?.scrollIntoView({
+      block: "nearest",
+      inline: "center",
+      behavior: "instant",
+    });
+  }, []);
+
+  const handleNavClick = useCallback((index: number) => {
+    const scrollTop = document.scrollingElement!.scrollTop;
+    const itemY = itemsRef.current[index]?.getBoundingClientRect().top || 0;
+    const top = scrollTop + itemY - HeaderHeight;
+    if (top > 0) {
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }, []);
 
   useEffect(() => {
     itemsRef.current = data.map((d, i) => document.getElementById(d.id));
   }, []);
+
+  useEffect(() => {
+    const $target = entries[0]?.target as HTMLElement | undefined;
+    const index = $target?.dataset.index;
+
+    if (typeof index === "string") setCurrentItem(+index);
+  }, [entries]);
+
+  console.log(entries);
 
   return (
     <div className={cx("ScrollSpy")}>
@@ -57,13 +84,13 @@ const ScrollSpy2 = () => {
         <ul className={cx("nav")}>
           {data.map(({ index, id }) => (
             <li
-              className={cx("navItem")}
+              className={cx("navItem", { current: currentIndex === index })}
               key={id}
               ref={(r) => {
                 navRef.current[index] = r;
               }}
             >
-              <button>{index + 1}</button>
+              <button onClick={() => handleNavClick(index)}>{index + 1}</button>
             </li>
           ))}
         </ul>
