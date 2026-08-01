@@ -12,6 +12,7 @@ import ScrollBox from "./components/scrollBox";
 import ScrollSpy from "./components/scrollSpy/react";
 import ScrollSpy1R from "./components/scrollSpy/1_r";
 import ScrollSpy2R from "./components/scrollSpy/2_r";
+import ScrollSpy3V from "./components/scrollSpy/3_v";
 
 export const routePaths = [
   "/",
@@ -177,7 +178,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: "/scrollSpy/3_v",
     link: "/scrollSpy/3_v",
     name: "09-3. 스크롤 스파이 (Vanilla)",
-    children: null,
+    children: ScrollSpy3V,
   },
   "/scrollSpy/4_r": {
     key: "/scrollSpy/4_r",
