@@ -57,8 +57,6 @@ const initiator = (wrapper: HTMLDivElement) => {
   };
 
   const handleNavClick = (e: Event) => {
-    // e.target.parentElement.dataset.index
-    // => 코드수정으로 계층구조가 바뀌면 parentElement.parentElement 로 바꿔야 할 수도...
     const path = e.composedPath() as HTMLElement[];
     const $li = path.find((el) => el.localName === "li");
     const index = +($li?.dataset.index || 0);
