@@ -8,11 +8,12 @@ import LazyLoad1R from "./components/lazyLoading/1_r";
 import LazyLoadingVanilla from "./components/lazyLoading/1_v";
 import InfiniteScrollR from "./components/infiniteScroll/react";
 import InfiniteScrollV from "./components/infiniteScroll/vanilla";
-import ScrollBox from "./components/scrollBox";
 import ScrollSpy from "./components/scrollSpy/react";
 import ScrollSpy1R from "./components/scrollSpy/1_r";
 import ScrollSpy2R from "./components/scrollSpy/2_r";
 import ScrollSpy3V from "./components/scrollSpy/3_v";
+import ScrollSpy4R from "./components/scrollSpy/4_r";
+import ForwardedScrollBox from "./components/scrollBox";
 
 export const routePaths = [
   "/",
@@ -154,7 +155,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: "/scrollBox",
     link: "/scrollBox",
     name: "08. 횡 스크롤 박스",
-    children: ScrollBox,
+    children: ForwardedScrollBox,
   },
   "/scrollSpy": {
     key: "/scrollSpy",
@@ -184,7 +185,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: "/scrollSpy/4_r",
     link: "/scrollSpy/4_r",
     name: "09-4. 스크롤 스파이 (React #4)",
-    children: null,
+    children: ScrollSpy4R,
   },
   "/snackbar": {
     key: "/snackbar",

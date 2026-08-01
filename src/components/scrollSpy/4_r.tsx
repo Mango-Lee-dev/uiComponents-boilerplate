@@ -2,9 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import cx from "./cx";
 import data from "./data";
 
-import { ScrollBoxHandle } from "../scrollBox/react/ScrollBox";
+import ForwardedScrollBox, {
+  ScrollBoxHandle,
+} from "../scrollBox/react/ScrollBox";
 import useIntersectionObserverV2 from "@/hooks/useIntersectionObserverV2";
-import ScrollBox from "../scrollBox";
 
 const HeaderHeight = 60;
 
@@ -98,7 +99,7 @@ const ScrollSpy4 = () => {
           스크롤 스파이 #4. React <sub>IO + ScrollBox</sub>
         </h3>
 
-        <ScrollBox
+        <ForwardedScrollBox
           ref={scrollboxRef}
           list={data}
           Item={NavItem}
